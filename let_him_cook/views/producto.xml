@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- VISTA LISTA -->
+    <record id="view_producto_list" model="ir.ui.view">
+        <field name="name">let_him_cook.producto.list</field>
+        <field name="model">let_him_cook.producto</field>
+        <field name="arch" type="xml">
+            <list string="Productos">
+                <field name="nombreProducto"/>
+                <field name="categoriaProducto"/>
+                <field name="precioProducto"/>
+                <field name="cantidadProducto"/>
+                <field name="valorStock"/>
+                <field name="disponibleProducto"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- VISTA FORMULARIO -->
+    <record id="view_producto_form" model="ir.ui.view">
+        <field name="name">let_him_cook.producto.form</field>
+        <field name="model">let_him_cook.producto</field>
+        <field name="arch" type="xml">
+            <form string="Producto">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nombreProducto"/>
+                            <field name="descripcionProducto"/>
+                            <field name="categoriaProducto"/>
+                            <field name="precioProducto"/>
+                        </group>
+
+                        <group>
+                            <field name="cantidadProducto"/>
+                            <field name="valorStock"/>
+                            <field name="disponibleProducto"/>
+                            <field name="imagenProducto"
+                                   widget="image"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="fechaCreacionProducto"/>
+                        <field name="fechaActualizacionProducto"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- VISTA BUSQUEDA -->
+    <record id="view_producto_search" model="ir.ui.view">
+    <field name="name">let_him_cook.producto.search</field>
+    <field name="model">let_him_cook.producto</field>
+    <field name="arch" type="xml">
+        <search string="Buscar productos">
+            <field name="nombreProducto"/>
+
+            <filter name="disponibles"
+                    string="Disponibles"
+                    domain="[('disponibleProducto', '=', True)]"/>
+
+            <group>
+                <filter name="agrupar_categoria"
+                        string="Agrupar por categoría"
+                        context="{'group_by': 'categoriaProducto'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+</odoo>

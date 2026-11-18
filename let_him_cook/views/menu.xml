@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- ACCIONES -->
+    <record id="action_pedido" model="ir.actions.act_window">
+        <field name="name">Pedidos</field>
+        <field name="res_model">let_him_cook.pedido</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_producto" model="ir.actions.act_window">
+        <field name="name">Productos</field>
+        <field name="res_model">let_him_cook.producto</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_empleado" model="ir.actions.act_window">
+        <field name="name">Empleados</field>
+        <field name="res_model">let_him_cook.empleado</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_proveedor" model="ir.actions.act_window">
+        <field name="name">Proveedores</field>
+        <field name="res_model">let_him_cook.proveedor</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- MENUS -->
+    <menuitem id="menu_let_him_cook_root"
+              name="LET HIM COOK"
+              sequence="10"/>
+
+    <menuitem id="menu_pedido"
+              name="Pedidos"
+              parent="menu_let_him_cook_root"
+              action="action_pedido"
+              sequence="1"/>
+
+    <menuitem id="menu_producto"
+              name="Productos"
+              parent="menu_let_him_cook_root"
+              action="action_producto"
+              sequence="2"/>
+
+    <menuitem id="menu_empleado"
+              name="Empleados"
+              parent="menu_let_him_cook_root"
+              action="action_empleado"
+              sequence="3"/>
+
+    <menuitem id="menu_proveedor"
+              name="Proveedores"
+              parent="menu_let_him_cook_root"
+              action="action_proveedor"
+              sequence="4"/>
+
+</odoo>

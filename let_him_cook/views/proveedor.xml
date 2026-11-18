@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- VISTA LISTA -->
+    <record id="view_proveedor_list" model="ir.ui.view">
+        <field name="name">let_him_cook.proveedor.list</field>
+        <field name="model">let_him_cook.proveedor</field>
+        <field name="arch" type="xml">
+            <list string="Proveedores">
+                <field name="nombreProveedor"/>
+                <field name="cifProveedor"/>
+                <field name="telefonoProveedor"/>
+                <field name="emailProveedor"/>
+                <field name="tipoProveedor"/>
+                <field name="activoProveedor"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- VISTA FORMULARIO -->
+    <record id="view_proveedor_form" model="ir.ui.view">
+        <field name="name">let_him_cook.proveedor.form</field>
+        <field name="model">let_him_cook.proveedor</field>
+        <field name="arch" type="xml">
+            <form string="Proveedor">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nombreProveedor"/>
+                            <field name="cifProveedor"/>
+                            <field name="tipoProveedor"/>
+                            <field name="activoProveedor"/>
+                        </group>
+
+                        <group>
+                            <field name="telefonoProveedor"/>
+                            <field name="emailProveedor"/>
+                            <field name="direccionProveedor"/>
+                            <field name="fechaAltaProveedor"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="observacionesProveedor"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- VISTA BUSQUEDA -->
+     <record id="view_proveedor_search" model="ir.ui.view">
+    <field name="name">let_him_cook.proveedor.search</field>
+    <field name="model">let_him_cook.proveedor</field>
+    <field name="arch" type="xml">
+        <search string="Buscar proveedores">
+            <field name="nombreProveedor"/>
+            <field name="cifProveedor"/>
+
+            <filter name="activos"
+                    string="Activos"
+                    domain="[('activoProveedor', '=', True)]"/>
+
+            <group>
+                <filter name="agrupar_tipo"
+                        string="Agrupar por tipo"
+                        context="{'group_by': 'tipoProveedor'}"/>
+            </group>
+        </search>
+    </field>
+    </record>
+
+</odoo>

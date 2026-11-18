@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- VISTA LISTA -->
+    <record id="view_empleado_list" model="ir.ui.view">
+        <field name="name">let_him_cook.empleado.list</field>
+        <field name="model">let_him_cook.empleado</field>
+        <field name="arch" type="xml">
+            <list string="Empleados">
+                <field name="nombreCompleto"/>
+                <field name="edadEmpleado"/>
+                <field name="puestoEmpleado"/>
+                <field name="salarioEmpleado"/>
+                <field name="activoEmpleado"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- VISTA FORMULARIO -->
+    <record id="view_empleado_form" model="ir.ui.view">
+        <field name="name">let_him_cook.empleado.form</field>
+        <field name="model">let_him_cook.empleado</field>
+        <field name="arch" type="xml">
+            <form string="Empleado">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nombreEmpleado"/>
+                            <field name="apellidoEmpleado"/>
+                            <field name="nombreCompleto"/>
+                            <field name="edadEmpleado"/>
+                            <field name="puestoEmpleado"/>
+                        </group>
+                        <group>
+                            <field name="salarioEmpleado"/>
+                            <field name="fechaNacimientoEmpleado"/>
+                            <field name="fechaContratacionEmpleado"/>
+                            <field name="activoEmpleado"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Observaciones">
+                            <field name="observacionesEmpleado"/>
+                        </page>
+
+                        <page string="Pedidos gestionados">
+                            <field name="pedido_ids">
+                                <list>
+                                    <field name="nombrePedido"/>
+                                    <field name="fechaEntrega"/>
+                                    <field name="estadoPedido"/>
+                                    <field name="precioTotal"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- VISTA BUSQUEDA -->
+    <record id="view_empleado_search" model="ir.ui.view">
+    <field name="name">let_him_cook.empleado.search</field>
+    <field name="model">let_him_cook.empleado</field>
+    <field name="arch" type="xml">
+        <search string="Buscar empleados">
+            <field name="nombreEmpleado"/>
+            <field name="apellidoEmpleado"/>
+            <field name="puestoEmpleado"/>
+
+            <filter name="activos"
+                    string="Activos"
+                    domain="[('activoEmpleado', '=', True)]"/>
+
+            <filter name="inactivos"
+                    string="Inactivos"
+                    domain="[('activoEmpleado', '=', False)]"/>
+
+            <group>
+                <filter name="agrupar_puesto"
+                        string="Agrupar por puesto"
+                        context="{'group_by': 'puestoEmpleado'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+</odoo>

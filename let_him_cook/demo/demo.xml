@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- EMPLEADOS -->
+        <record id="demo_empleado_1" model="let_him_cook.empleado">
+            <field name="nombreEmpleado">Carlos</field>
+            <field name="apellidoEmpleado">Martinez</field>
+            <field name="edadEmpleado">28</field>
+            <field name="puestoEmpleado">pastelero</field>
+            <field name="salarioEmpleado">2200</field>
+            <field name="fechaNacimientoEmpleado">1998-03-12</field>
+            <field name="fechaContratacionEmpleado">2025-01-10</field>
+            <field name="activoEmpleado" eval="True"/>
+        </record>
+
+        <record id="demo_empleado_2" model="let_him_cook.empleado">
+            <field name="nombreEmpleado">Laura</field>
+            <field name="apellidoEmpleado">Sanchez</field>
+            <field name="edadEmpleado">25</field>
+            <field name="puestoEmpleado">repostero</field>
+            <field name="salarioEmpleado">2000</field>
+            <field name="fechaNacimientoEmpleado">2001-06-20</field>
+            <field name="fechaContratacionEmpleado">2025-03-15</field>
+            <field name="activoEmpleado" eval="True"/>
+        </record>
+
+
+        <!-- PRODUCTOS -->
+        <record id="demo_producto_1" model="let_him_cook.producto">
+            <field name="nombreProducto">Tarta Red Velvet</field>
+            <field name="descripcionProducto">Tarta artesanal de terciopelo rojo</field>
+            <field name="precioProducto">45</field>
+            <field name="cantidadProducto">20</field>
+            <field name="disponibleProducto" eval="True"/>
+            <field name="categoriaProducto">tartas</field>
+            <field name="fechaCreacionProducto">2026-11-16</field>
+        </record>
+
+        <record id="demo_producto_2" model="let_him_cook.producto">
+            <field name="nombreProducto">Macarons variados</field>
+            <field name="descripcionProducto">Caja de macarons artesanales</field>
+            <field name="precioProducto">18</field>
+            <field name="cantidadProducto">40</field>
+            <field name="disponibleProducto" eval="True"/>
+            <field name="categoriaProducto">macarons</field>
+            <field name="fechaCreacionProducto">2026-11-16</field>
+        </record>
+
+        <record id="demo_producto_3" model="let_him_cook.producto">
+            <field name="nombreProducto">Bombones de chocolate</field>
+            <field name="descripcionProducto">Caja de bombones de chocolate negro</field>
+            <field name="precioProducto">15</field>
+            <field name="cantidadProducto">30</field>
+            <field name="disponibleProducto" eval="True"/>
+            <field name="categoriaProducto">bombones</field>
+            <field name="fechaCreacionProducto">2026-11-16</field>
+        </record>
+
+
+        <!-- PROVEEDORES -->
+        <record id="demo_proveedor_1" model="let_him_cook.proveedor">
+            <field name="nombreProveedor">Distribuciones Dulces</field>
+            <field name="cifProveedor">B12345678</field>
+            <field name="telefonoProveedor">600123456</field>
+            <field name="emailProveedor">contacto@dulces.com</field>
+            <field name="direccionProveedor">Zaragoza</field>
+            <field name="tipoProveedor">chocolate</field>
+            <field name="fechaAltaProveedor">2025-01-01</field>
+            <field name="activoProveedor" eval="True"/>
+        </record>
+
+        <record id="demo_proveedor_2" model="let_him_cook.proveedor">
+            <field name="nombreProveedor">Frutas del Ebro</field>
+            <field name="cifProveedor">B87654321</field>
+            <field name="telefonoProveedor">611222333</field>
+            <field name="emailProveedor">ventas@frutasebro.com</field>
+            <field name="direccionProveedor">Zaragoza</field>
+            <field name="tipoProveedor">frutas</field>
+            <field name="fechaAltaProveedor">2025-02-01</field>
+            <field name="activoProveedor" eval="True"/>
+        </record>
+
+
+        <!-- PEDIDOS -->
+        <record id="demo_pedido_1" model="let_him_cook.pedido">
+            <field name="nombrePedido">DEMO001</field>
+            <field name="fechaPedido">2026-11-16</field>
+            <field name="fechaEntrega">2026-11-18</field>
+            <field name="fechaRegistro">2026-11-16 10:00:00</field>
+            <field name="estadoPedido">pendiente</field>
+            <field name="pedidoUrgente" eval="False"/>
+            <field name="empleado_id" ref="demo_empleado_1"/>
+            <field name="producto_ids"
+                   eval="[(6, 0, [ref('demo_producto_1'), ref('demo_producto_2')])]"/>
+            <field name="observacionesPedido">Pedido de demostración</field>
+        </record>
+
+        <record id="demo_pedido_2" model="let_him_cook.pedido">
+            <field name="nombrePedido">DEMO002</field>
+            <field name="fechaPedido">2026-11-16</field>
+            <field name="fechaEntrega">2026-11-20</field>
+            <field name="fechaRegistro">2026-11-16 11:00:00</field>
+            <field name="estadoPedido">preparacion</field>
+            <field name="pedidoUrgente" eval="True"/>
+            <field name="empleado_id" ref="demo_empleado_2"/>
+            <field name="producto_ids"
+                   eval="[(6, 0, [ref('demo_producto_3')])]"/>
+            <field name="observacionesPedido">Pedido urgente de demostración</field>
+        </record>
+
+    </data>
+</odoo>

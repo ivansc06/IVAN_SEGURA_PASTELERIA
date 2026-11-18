@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_empleado,access.empleado,model_let_him_cook_empleado,base.group_user,1,1,1,1
+access_producto,access.producto,model_let_him_cook_producto,base.group_user,1,1,1,1
+access_pedido,access.pedido,model_let_him_cook_pedido,base.group_user,1,1,1,1

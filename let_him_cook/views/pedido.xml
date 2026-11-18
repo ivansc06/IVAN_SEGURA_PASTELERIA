@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- VISTA LISTA -->
+    <record id="view_pedido_list" model="ir.ui.view">
+        <field name="name">let_him_cook.pedido.list</field>
+        <field name="model">let_him_cook.pedido</field>
+        <field name="arch" type="xml">
+            <list string="Pedidos">
+                <field name="nombrePedido"/>
+                <field name="fechaPedido"/>
+                <field name="fechaEntrega"/>
+                <field name="empleado_id"/>
+                <field name="estadoPedido"/>
+                <field name="precioTotal"/>
+                <field name="pedidoUrgente"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- VISTA FORMULARIO -->
+    <record id="view_pedido_form" model="ir.ui.view">
+        <field name="name">let_him_cook.pedido.form</field>
+        <field name="model">let_him_cook.pedido</field>
+        <field name="arch" type="xml">
+            <form string="Pedido">
+                <header>
+                    <button name="action_marcar_listo"
+                            type="object"
+                            string="Marcar como listo"
+                            class="btn-primary"/>
+
+                    <button name="action_marcar_entregado"
+                            type="object"
+                            string="Marcar como entregado"
+                            class="btn-success"/>
+
+                    <field name="estadoPedido" widget="statusbar"
+                           statusbar_visible="pendiente,preparacion,listo,entregado,cancelado"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="nombrePedido"/>
+                            <field name="fechaPedido"/>
+                            <field name="fechaEntrega"/>
+                            <field name="fechaRegistro"/>
+                        </group>
+
+                        <group>
+                            <field name="empleado_id"/>
+                            <field name="pedidoUrgente"/>
+                            <field name="precioTotal"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="producto_ids" widget="many2many_tags"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Observaciones">
+                            <field name="observacionesPedido"/>
+                        </page>
+
+                        <page string="Imagen">
+                            <field name="imagenPedido"
+                                   widget="image"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- VISTA BUSQUEDA -->
+    
+<record id="view_pedido_search" model="ir.ui.view">
+    <field name="name">let_him_cook.pedido.search</field>
+    <field name="model">let_him_cook.pedido</field>
+    <field name="arch" type="xml">
+        <search string="Buscar pedidos">
+            <field name="nombrePedido"/>
+            <field name="empleado_id"/>
+
+            <filter name="pendientes"
+                    string="Pendientes"
+                    domain="[('estadoPedido', '=', 'pendiente')]"/>
+
+            <filter name="urgentes"
+                    string="Urgentes"
+                    domain="[('pedidoUrgente', '=', True)]"/>
+
+            <group>
+                <filter name="agrupar_estado"
+                        string="Agrupar por estado"
+                        context="{'group_by': 'estadoPedido'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+
+</odoo>
